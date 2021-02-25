@@ -32,4 +32,4 @@ chrome 书签插件
 
 #### preview
 
-![preview](preview.png)
+![preview](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-b1ebbd3c-ca49-405b-957b-effe60782276/8eb2c8d8-3aa8-4f48-bdd4-ec9e08c4f7ae.png)
