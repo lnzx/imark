@@ -14,8 +14,15 @@ chrome.runtime.onMessage.addListener((request, sender, response) => {
     }
     if(x == -1){
         const id = request.id;
-        chrome.bookmarks.removeTree(id, ()=>{
+        chrome.bookmarks.removeTree(id, () => {
             response(0);
+        });
+    }
+    if(x == 1){
+        const id = request.id;
+        const to = request.to;
+        chrome.bookmarks.move(id, {parentId: to}, (node) => {
+            response({x:0});
         });
     }
     return true;

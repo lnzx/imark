@@ -28,7 +28,9 @@ chrome 书签插件
 
 * 书签列表
 
-* 拖拽删除书签
+* 拖拽删除书签/目录
+
+* 移动书签
 
 #### 缺陷
 
@@ -37,9 +39,10 @@ chrome 书签插件
 #### future
 
 * 支持多级目录
-* 拖动书签
 * 批量打开
+* 中文字体[优化]
+* 响应式布局[优化]
 
 #### preview(点击查看高清大图)
 
-![preview](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-b1ebbd3c-ca49-405b-957b-effe60782276/8eb2c8d8-3aa8-4f48-bdd4-ec9e08c4f7ae.png)
+![preview](https://s3.jpg.cm/2021/02/26/zgnct.png)
