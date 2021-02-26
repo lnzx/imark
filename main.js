@@ -17,6 +17,8 @@ const markList = $('#markList');
 const wrap1 = $('#wrap-1');
 const trash = $('#trash');
 
+let urls = new Set();
+
 chrome.runtime.sendMessage({x: 0}, (res) => {
   let bookmarkBars = res[0];
   let otherBookmarks = res[1];
@@ -28,6 +30,8 @@ chrome.runtime.sendMessage({x: 0}, (res) => {
   if(otherBookmarks.length > 0){
       traversal(1, otherBookmarks);
   }
+
+  urls.clear();
 });
 
 [bars, others].forEach((o) => {
@@ -79,14 +83,17 @@ function child(node){
   let children = node.children;
   for (let index = 0,len = children.length; index < len; index++) {
       const child = children[index];
-      wrap.appendChild(newCard(child));
+      if(filter(child)){
+        wrap.appendChild(newCard(child));  
+      }
   }
-
   markList.appendChild(wrap);
 }
 
 function bookmark(mark){
-  wrap1.appendChild(newCard(mark));
+  if(filter(mark)){
+    wrap1.appendChild(newCard(mark));
+  }
 }
 
 function newCard(mark){
@@ -237,3 +244,22 @@ trash.addEventListener('drop', (e) => {
     }
   });
 });
+
+function time33(val){
+  let hash = 5381;
+  for (let i=0,j=val.length; i < j; i++) {
+    hash += (hash << 5) + val.charAt(i).charCodeAt();
+  }
+  return hash >>> 0;
+}
+
+function filter(mark){
+  const hash = time33(mark.url);
+  if(urls.has(hash)){
+    chrome.runtime.sendMessage({x: -1, id: mark.id});
+    return false;
+  }else{
+    urls.add(hash);
+    return true;
+  }
+}
