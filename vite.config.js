@@ -1,7 +1,7 @@
 const { resolve } = require('path')
 
 module.exports = {
-    base: "",
+    base: "/",
     server: {
       port: 3000,
       open: true
